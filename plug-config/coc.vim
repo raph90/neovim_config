@@ -158,3 +158,10 @@ nmap <leader>ge <Plug>(coc-definition)
 nmap <leader>gs :sp<CR><Plug>(coc-definition)
 nmap <leader>gv :vsp<CR><Plug>(coc-definition)
 nmap <leader>gt :vsp<CR><Plug>(coc-definition)<C-W>T
+
+
+function! s:cocActionsOpenFromSelected(type) abort
+  execute 'CocCommand actions.open ' . a:type
+endfunction
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
